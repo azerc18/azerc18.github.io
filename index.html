@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toan Le · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<script>/* apply saved theme + language before paint */
+try{const t=localStorage.getItem('tl-theme');if(t&&t!=='auto')document.documentElement.dataset.theme=t;const l=localStorage.getItem('tl-lang');document.documentElement.lang=l||((navigator.language||'').startsWith('vi')?'vi':'en')}catch(e){}</script>
+<style>
+/* VOICE: playful but tidy — a retro RPG that still reads like a serious CV
+   IDEA: the portfolio is a 16-bit game: title screen, player card, inventory, quest cartridges, achievements
+   PICTURE: pixel dusk scene — lavender field, purple mountains, hilltop castle, twinkling stars (from the wallpaper)
+   COLOUR and TYPE: violet dominant, pink-peach dusk support, gold accent; Press Start 2P titles (VT323 in Vietnamese), VT323 body
+   LAYOUT: full-bleed title screen, bands at max 1180px, auto-fit grids, a walking slogan strip before contact */
+:root{color-scheme:light dark;
+--bg:light-dark(#efe5ff,#110b29);--ink:light-dark(#22154d,#efe7ff);--mute:light-dark(#5b4a8c,#b7a8e6);
+--panel:light-dark(#fffaff,#1b1340);--line:light-dark(#2a1b5e,#0a061b);--sh:light-dark(#b59be6,#05030f);--band:light-dark(#e4d4ff,#170f36);
+--acc:light-dark(#7b4fd6,#b48cff);--pink:light-dark(#e8558f,#ff8fc0);--gold:light-dark(#c98a10,#ffcf5c);
+--s1:light-dark(#3a2a78,#0d0a24);--s2:light-dark(#5a3f9e,#171040);--s3:light-dark(#8a5cc2,#24195c);--s4:light-dark(#c98ad6,#3a2878);--s5:light-dark(#f4b2cf,#563a94);--s6:light-dark(#ffd6c2,#6f4aa8);
+--sun:light-dark(#fff1d6,#f3e9ff);--cl:light-dark(#fbe3f2,#4a3a85);--cl2:light-dark(#d9a3d9,#33275f);
+--m1:light-dark(#7d63bf,#2c2163);--m2:light-dark(#4e3a92,#1f174a);--hill:light-dark(#36286e,#150f33);--tree:light-dark(#241a4d,#0e0a24);
+--f0:light-dark(#5b3fa0,#2a1d5a);--f1:light-dark(#b98ae8,#7b55c4);--f2:light-dark(#e3b6f5,#a77ee0);--f3:light-dark(#8c5fd6,#5d3fa8);--win:light-dark(#ffd98a,#ffcf5c);
+--hf:"Press Start 2P",ui-monospace,monospace;--k:1}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+:root[lang=vi]{--hf:"VT323",ui-monospace,monospace;--k:1.9}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:21px/1.3 "VT323",ui-monospace,monospace;overflow-x:clip}
+a{color:inherit}
+body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='34' viewBox='0 0 12 17' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='1' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='5' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='6' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='6' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='7' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='3' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='4' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='7' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='8' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='3' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='4' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='8' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='9' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='3' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='4' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='9' y='9' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='10' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='3' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='4' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='10' width='1' height='1' fill='%2322154d'/%3E%3Crect x='7' y='10' width='1' height='1' fill='%2322154d'/%3E%3Crect x='8' y='10' width='1' height='1' fill='%2322154d'/%3E%3Crect x='9' y='10' width='1' height='1' fill='%2322154d'/%3E%3Crect x='10' y='10' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='11' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='11' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='11' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='3' y='11' width='1' height='1' fill='%2322154d'/%3E%3Crect x='4' y='11' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='11' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='11' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='12' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='12' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='12' width='1' height='1' fill='%2322154d'/%3E%3Crect x='4' y='12' width='1' height='1' fill='%2322154d'/%3E%3Crect x='5' y='12' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='12' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='12' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='13' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='13' width='1' height='1' fill='%2322154d'/%3E%3Crect x='4' y='13' width='1' height='1' fill='%2322154d'/%3E%3Crect x='5' y='13' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='13' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='13' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='14' width='1' height='1' fill='%2322154d'/%3E%3Crect x='5' y='14' width='1' height='1' fill='%2322154d'/%3E%3Crect x='6' y='14' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='14' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='14' width='1' height='1' fill='%2322154d'/%3E%3Crect x='5' y='15' width='1' height='1' fill='%2322154d'/%3E%3Crect x='6' y='15' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='15' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='15' width='1' height='1' fill='%2322154d'/%3E%3Crect x='6' y='16' width='1' height='1' fill='%2322154d'/%3E%3Crect x='7' y='16' width='1' height='1' fill='%2322154d'/%3E%3C/svg%3E") 0 0,auto}
+a,button,.btn,.ctl,[role=button]{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='30' viewBox='0 0 14 15' shape-rendering='crispEdges'%3E%3Crect x='4' y='0' width='1' height='1' fill='%2322154d'/%3E%3Crect x='5' y='0' width='1' height='1' fill='%2322154d'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%2322154d'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='1' width='1' height='1' fill='%2322154d'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%2322154d'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%2322154d'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%2322154d'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%2322154d'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%2322154d'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%2322154d'/%3E%3Crect x='7' y='4' width='1' height='1' fill='%2322154d'/%3E%3Crect x='8' y='4' width='1' height='1' fill='%2322154d'/%3E%3Crect x='9' y='4' width='1' height='1' fill='%2322154d'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%2322154d'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='5' width='1' height='1' fill='%2322154d'/%3E%3Crect x='7' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='9' y='5' width='1' height='1' fill='%2322154d'/%3E%3Crect x='10' y='5' width='1' height='1' fill='%2322154d'/%3E%3Crect x='11' y='5' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='6' width='1' height='1' fill='%2322154d'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%2322154d'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%2322154d'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='6' width='1' height='1' fill='%2322154d'/%3E%3Crect x='8' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='9' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='10' y='6' width='1' height='1' fill='%2322154d'/%3E%3Crect x='11' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='12' y='6' width='1' height='1' fill='%2322154d'/%3E%3Crect x='13' y='6' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='7' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='3' y='7' width='1' height='1' fill='%2322154d'/%3E%3Crect x='4' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='9' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='10' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='11' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='12' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='13' y='7' width='1' height='1' fill='%2322154d'/%3E%3Crect x='0' y='8' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='3' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='4' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='9' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='10' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='11' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='12' y='8' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='13' y='8' width='1' height='1' fill='%2322154d'/%3E%3Crect x='1' y='9' width='1' height='1' fill='%2322154d'/%3E%3Crect x='2' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='3' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='4' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='9' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='10' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='11' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='12' y='9' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='13' y='9' width='1' height='1' fill='%2322154d'/%3E%3Crect x='2' y='10' width='1' height='1' fill='%2322154d'/%3E%3Crect x='3' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='4' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='9' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='10' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='11' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='12' y='10' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='13' y='10' width='1' height='1' fill='%2322154d'/%3E%3Crect x='2' y='11' width='1' height='1' fill='%2322154d'/%3E%3Crect x='3' y='11' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='4' y='11' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='11' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='11' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='11' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='11' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='9' y='11' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='10' y='11' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='11' y='11' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='12' y='11' width='1' height='1' fill='%2322154d'/%3E%3Crect x='3' y='12' width='1' height='1' fill='%2322154d'/%3E%3Crect x='4' y='12' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='12' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='12' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='12' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='12' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='9' y='12' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='10' y='12' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='11' y='12' width='1' height='1' fill='%2322154d'/%3E%3Crect x='3' y='13' width='1' height='1' fill='%2322154d'/%3E%3Crect x='4' y='13' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='13' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='13' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='13' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='13' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='9' y='13' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='10' y='13' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='11' y='13' width='1' height='1' fill='%2322154d'/%3E%3Crect x='3' y='14' width='1' height='1' fill='%2322154d'/%3E%3Crect x='4' y='14' width='1' height='1' fill='%2322154d'/%3E%3Crect x='5' y='14' width='1' height='1' fill='%2322154d'/%3E%3Crect x='6' y='14' width='1' height='1' fill='%2322154d'/%3E%3Crect x='7' y='14' width='1' height='1' fill='%2322154d'/%3E%3Crect x='8' y='14' width='1' height='1' fill='%2322154d'/%3E%3Crect x='9' y='14' width='1' height='1' fill='%2322154d'/%3E%3Crect x='10' y='14' width='1' height='1' fill='%2322154d'/%3E%3Crect x='11' y='14' width='1' height='1' fill='%2322154d'/%3E%3C/svg%3E") 8 0,pointer}
+h2,h3,.btn,nav a,.ctl,.stat b,.status,.when,.who,.opt b,.start,.ach-total span,footer b,.inv-h,.toast b{font-family:var(--hf);font-weight:400}
+.px{background:var(--panel);box-shadow:0 -4px 0 var(--line),0 4px 0 var(--line),-4px 0 0 var(--line),4px 0 0 var(--line),4px 8px 0 var(--sh),8px 4px 0 var(--sh)}
+/* nav */
+nav{position:sticky;top:0;z-index:5;background:var(--line);display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;padding:8px max(4vw,14px) 12px}
+nav .logo{color:#ffcf5c;font-family:"Press Start 2P";font-size:12px;margin-right:auto;text-decoration:none}
+nav a{color:#e9dcff;font-size:calc(10px*var(--k));text-decoration:none;padding:8px 4px 8px 16px;position:relative;min-height:36px;display:inline-flex;align-items:center}
+nav a:not(.logo)::before{content:"";position:absolute;left:0;top:50%;margin-top:-5px;border:5px solid transparent;border-left-color:#ffcf5c;opacity:0}
+nav a:hover::before,nav a:focus-visible::before{opacity:1}
+.ctls{display:flex;flex-wrap:wrap;gap:8px}
+.ctl{font-size:calc(9px*var(--k));min-height:36px;padding:0 12px;background:#2a1b5e;color:#ffcf5c;border:2px solid #4e3a92;cursor:pointer}
+.ctl:hover{background:#3a2a78}
+.xp{position:absolute;left:0;right:0;bottom:0;height:4px;background:#2a1b5e}
+.xp i{display:block;height:100%;width:0;background:#ffcf5c}
+/* hero */
+.hero{position:relative;height:clamp(460px,82vh,720px);overflow:hidden;background:var(--s1)}
+.hero svg{position:absolute;inset:0;width:100%;height:100%}
+.s1{fill:var(--s1)}.s2{fill:var(--s2)}.s3{fill:var(--s3)}.s4{fill:var(--s4)}.s5{fill:var(--s5)}.s6{fill:var(--s6)}
+.sun{fill:var(--sun)}.cl{fill:var(--cl)}.cl2{fill:var(--cl2)}.m1{fill:var(--m1)}.m2{fill:var(--m2)}.hill{fill:var(--hill)}.tree{fill:var(--tree)}.win{fill:var(--win)}
+.f0{fill:var(--f0)}.f1{fill:var(--f1)}.f2{fill:var(--f2)}.f3{fill:var(--f3)}.st{fill:#fff}
+.tw{animation:tw 2.4s steps(2) infinite}.tw2{animation:tw 3.1s steps(2) .8s infinite}
+@keyframes tw{50%{opacity:.15}}
+.drift{animation:drift 60s linear infinite}@keyframes drift{to{transform:translateX(40px)}}
+.title{position:absolute;left:50%;top:13%;transform:translateX(-50%);text-align:center;width:min(92vw,780px);color:#fff}
+.title h1{font-family:"Press Start 2P";font-weight:400;font-size:clamp(28px,6.4vw,62px);line-height:1.1;margin:0;text-shadow:4px 4px 0 var(--line),-2px -2px 0 var(--acc)}
+.title p{font-size:clamp(20px,2.6vw,28px);margin:14px 0 0;text-shadow:2px 2px 0 var(--line)}
+.start{margin-top:22px;font-size:calc(12px*var(--k));color:#ffcf5c;text-shadow:2px 2px 0 var(--line);animation:blink 1.1s steps(2) infinite;text-decoration:none;display:inline-block;padding:10px}
+@keyframes blink{50%{opacity:0}}
+/* sections */
+.band{padding:clamp(40px,6vw,84px) max(5vw,16px)}
+.alt-bg{background:var(--band)}
+.wrap{max-width:1180px;margin:0 auto}
+h2{font-size:calc(clamp(16px,2.4vw,24px)*var(--k));line-height:1.3;margin:0 0 8px;color:var(--acc)}
+h2 span{color:var(--pink)}
+.lead{color:var(--mute);margin:0 0 34px;max-width:62ch}
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .45s steps(4),transform .45s steps(4)}
+.rv.in{opacity:1;transform:none}
+/* player */
+.player{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr);gap:28px;padding:26px;align-items:start}
+.avatar{position:relative;aspect-ratio:1;background:var(--s3);overflow:hidden;outline:4px solid var(--line)}
+.avatar svg,.avatar img{position:absolute;inset:0;width:100%;height:100%}
+#sprite{object-fit:cover}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px 22px;margin:14px 0 18px}
+.stat b{display:block;font-size:calc(10px*var(--k));color:var(--mute);margin-bottom:4px}
+.player h3{font-family:"Press Start 2P";font-size:clamp(15px,2vw,20px);margin:0;line-height:1.4}
+.player p{margin:0 0 10px;max-width:64ch}
+/* inventory */
+.inv-h{font-size:calc(11px*var(--k));color:var(--mute);margin:44px 0 18px}
+.inv{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px}
+.slot{padding:14px 10px;text-align:center;position:relative}
+.slot .tag{position:absolute;top:6px;right:8px;font-family:"Press Start 2P";font-size:8px;color:var(--gold)}
+.slot b{display:block;font-weight:400;font-size:21px;overflow-wrap:anywhere}
+.slot small{color:var(--mute);font-size:17px}
+.slot.main{background:linear-gradient(var(--gold) 0 0) top/100% 6px no-repeat,light-dark(#2a1b5e,#ffcf5c);color:light-dark(#fff,#1a0f3d)}
+.slot.main small{color:light-dark(#d9c8ff,#4a3373)}
+.slot.main .tag{color:light-dark(#ffcf5c,#7b4fd6)}
+/* quests */
+.quests{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:30px}
+.cart{display:flex;flex-direction:column;padding:0 0 18px;transition:transform .15s steps(2)}
+.cart.in:hover{transform:translate(-3px,-3px)}
+.cart .label{margin:16px 16px 14px;padding:14px;display:flex;gap:14px;align-items:center;background:var(--r);color:#1a0f3d;box-shadow:inset 0 -6px 0 rgba(0,0,0,.18)}
+.cart .label svg{width:52px;height:52px;flex:none;background:rgba(255,255,255,.35);padding:4px}
+.cart h3{font-family:"Press Start 2P";font-size:13px;line-height:1.5;margin:0}
+.cart .tag{font-family:"Press Start 2P";font-size:8px;display:block;margin-top:6px}
+.cart .body{padding:0 18px;flex:1}
+.cart .status{font-size:calc(9px*var(--k));color:var(--pink);margin:0 0 8px}
+.cart ul{margin:10px 0 12px;padding:0;list-style:none}
+.cart li{padding-left:20px;position:relative;margin-bottom:4px}
+.cart li::before{content:"";position:absolute;left:2px;top:9px;width:8px;height:8px;background:var(--acc)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chip{font-size:17px;padding:0 8px;background:var(--bg);border:2px solid var(--line)}
+.links{display:flex;gap:12px;flex-wrap:wrap;padding:0 18px}
+.btn{font-size:calc(10px*var(--k));text-decoration:none;padding:10px 14px;min-height:44px;background:var(--acc);color:#fff;box-shadow:0 4px 0 var(--line);display:inline-flex;align-items:center;border:0;cursor:pointer}
+.btn.alt{background:var(--panel);color:var(--ink);outline:3px solid var(--line);outline-offset:-3px}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.btn:focus-visible,a:focus-visible,.ctl:focus-visible{outline:3px dashed var(--gold);outline-offset:3px}
+/* achievements */
+.ach-total{padding:16px 20px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-bottom:30px}
+.ach-total span{font-size:calc(11px*var(--k));color:var(--gold)}
+.segs{flex:1 1 240px;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;height:22px}
+.segs i{background:var(--gold);box-shadow:inset 0 -4px 0 rgba(0,0,0,.18)}
+.segs i.q{background:transparent;border:2px dashed var(--mute);display:grid;place-items:center;font-style:normal;color:var(--mute);font-size:16px;line-height:1}
+.achs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:26px}
+.ach{display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:18px;align-items:start}
+.ach .ico{width:64px;height:64px;background:var(--gold);padding:8px;box-shadow:0 4px 0 var(--line)}
+.ach .ico svg{width:100%;height:100%;display:block}
+.ach h3{font-size:calc(11px*var(--k));line-height:1.4;margin:0 0 4px}
+.ach .when{font-size:calc(8px*var(--k));color:var(--pink);margin:0 0 6px}
+.ach p{margin:0}
+.ach.locked{background:transparent;box-shadow:none;border:3px dashed var(--mute)}
+.ach.locked .ico{background:var(--mute)}
+.ach.hidden .ico{display:grid;place-items:center;font-family:"Press Start 2P";font-size:22px;color:var(--panel)}
+.ach.pop{animation:pop .5s steps(4) both}
+@keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.06)}100%{transform:none;opacity:1}}
+/* slogan */
+.slogan{background:linear-gradient(var(--s2),var(--s3));padding:clamp(56px,8vw,110px) max(6vw,16px);text-align:center}
+.quote{margin:0 auto;max-width:900px}
+.quote p{margin:0;color:#fff;font-size:clamp(28px,4vw,46px);line-height:1.15;text-shadow:3px 3px 0 var(--line);text-wrap:balance}
+/* contact */
+.dialog{padding:26px;max-width:860px;margin:0 auto}
+.dialog .who{font-size:calc(11px*var(--k));color:var(--acc);margin-bottom:10px}
+#typed{min-height:2.6em;font-size:24px;margin:0 0 18px}
+#typed::after{content:"▌";animation:blink .8s steps(2) infinite}
+.opts{display:grid;gap:10px}
+.opt{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding:6px 0}
+.opt b{font-size:calc(10px*var(--k));width:9em;color:var(--mute)}
+:root[lang=vi] .opt b{width:6em}
+.opt a{font-size:22px}
+#copied{color:var(--pink);font-size:18px}
+footer{background:var(--line);color:#cdbcf5;text-align:center;padding:22px;font-size:18px}
+footer b{font-size:calc(9px*var(--k));color:#ffcf5c}
+/* toast */
+.toast{position:fixed;right:16px;bottom:16px;z-index:9;display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center;padding:12px 16px;max-width:min(360px,calc(100vw - 32px));transform:translateY(160%);transition:transform .4s steps(5)}
+.toast.show{transform:none}
+.toast svg{width:44px;height:44px;background:var(--gold);padding:6px}
+.toast b{display:block;font-size:calc(9px*var(--k));color:var(--gold);margin-bottom:4px}
+@media(max-width:600px){.player{grid-template-columns:1fr}.avatar{max-width:200px}nav .logo{width:100%}.title{top:9%}.opt b,:root[lang=vi] .opt b{width:auto;flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="#top">TOAN.LE</a>
+  <a href="#player" data-t="navPlayer">Player</a><a href="#quests" data-t="navQuests">Quests</a><a href="#achievements" data-t="navAch">Achievements</a><a href="#contact" data-t="navContact">Contact</a>
+  <div class="ctls"><button class="ctl" id="langBtn" type="button"></button><button class="ctl" id="themeBtn" type="button"></button><button class="ctl" id="sndBtn" type="button" aria-pressed="false"></button></div>
+  <div class="xp" aria-hidden="true"><i id="xp"></i></div>
+</nav>
+
+<header class="hero" id="top">
+  <svg id="scene" viewBox="0 0 320 180" preserveAspectRatio="xMidYMax slice" shape-rendering="crispEdges" aria-hidden="true"></svg>
+  <div class="title">
+    <h1>TOAN LE</h1>
+    <p data-t="heroSub">Back-end developer · Java &amp; Spring Boot · building things people actually use</p>
+    <a class="start" href="#player" data-t="start">▶ PRESS START</a>
+  </div>
+</header>
+
+<section class="band" id="player">
+  <div class="wrap">
+    <h2 class="rv" data-h="playerH">Player <span>select</span></h2>
+    <p class="lead rv" data-t="playerLead"></p>
+    <div class="player px rv">
+      <div>
+        <div class="avatar" id="avbox"><svg id="avatar" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"></svg>
+          <img id="sprite" src="avatar-pixel.png" alt="Pixel-art portrait of Toan Le" hidden></div>
+      </div>
+      <div>
+        <h3>Le Tran Phuoc Toan</h3>
+        <div class="stats">
+          <div class="stat"><b data-t="sClass"></b><span data-t="vClass"></span></div>
+          <div class="stat"><b data-t="sGuild"></b><span data-t="vGuild"></span></div>
+          <div class="stat"><b data-t="sLevel"></b><span data-t="vLevel"></span></div>
+        </div>
+        <p data-t="bio"></p>
+      </div>
+    </div>
+    <p class="inv-h rv" data-t="invH"></p>
+    <div class="inv" id="inv"></div>
+  </div>
+</section>
+
+<section class="band alt-bg" id="quests">
+  <div class="wrap">
+    <h2 class="rv" data-h="questH"></h2>
+    <p class="lead rv" data-t="questLead"></p>
+    <div class="quests" id="questList"></div>
+  </div>
+</section>
+
+<section class="band" id="achievements">
+  <div class="wrap">
+    <h2 class="rv" data-h="achH"></h2>
+    <p class="lead rv" data-t="achLead"></p>
+    <div class="ach-total px rv"><span id="achCount"></span><div class="segs" id="segs" aria-hidden="true"></div></div>
+    <div class="achs" id="achList"></div>
+  </div>
+</section>
+
+<section class="slogan" id="road">
+  <blockquote class="quote rv"><p>“<span data-t="slogan"></span>”</p></blockquote>
+</section>
+
+<section class="band alt-bg" id="contact">
+  <div class="dialog px rv">
+    <div class="who">TOAN</div>
+    <p id="typed" aria-live="polite"></p>
+    <div class="opts">
+      <div class="opt"><b>▶ Email</b><span>phuoctoanletran@gmail.com</span><button class="btn" id="copy" type="button" data-t="copy"></button><span id="copied"></span></div>
+      <div class="opt"><b>▶ GitHub</b><a href="https://github.com/azerc18">github.com/azerc18</a></div>
+      <div class="opt"><b>▶ LinkedIn</b><a href="https://www.linkedin.com/in/toanle-backend">linkedin.com/in/toanle-backend</a></div>
+    </div>
+  </div>
+</section>
+
+<footer><b>GAME OVER?</b> &nbsp;<span data-t="footer"></span> © 2026 Le Tran Phuoc Toan</footer>
+
+<div class="toast px" id="toast" role="status"><svg id="trophy" viewBox="0 0 8 8" shape-rendering="crispEdges"></svg><div><b data-t="toastH"></b><span data-t="toastB"></span></div></div>
+
+<script>
+{
+const $=id=>document.getElementById(id),root=document.documentElement;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const R=(c,x,y,w,h)=>`<rect class="${c}" x="${x}" y="${y}" width="${w}" height="${h}"/>`;
+let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+const bmp=(rows,cols)=>rows.map((row,y)=>[...row].map((v,x)=>v==='0'?'':`<rect x="${x}" y="${y}" width="1" height="1" fill="${cols[v]}"/>`).join('')).join('');
+const two={1:'#1a0f3d',2:'#fff'};
+
+/* ---------- text EN / VI ---------- */
+const T={
+en:{navPlayer:'Player',navQuests:'Quests',navAch:'Achievements',navContact:'Contact',
+heroSub:'Back-end developer · Java & Spring Boot · building things people actually use',start:'▶ PRESS START',
+playerH:['Player ','select'],playerLead:'One character, one class: back-end. Levelling up through university, team projects and real deployments.',
+sClass:'Class',vClass:'Back-end developer',sGuild:'Guild',vGuild:'FPT University · Software Engineering',sLevel:'Level',vLevel:'Year 2 student',
+bio:"I like back-end work where correctness matters: auth flows, concurrency, migrations and tests. Lately I've been wiring LLMs into real products — with quotas, fallbacks and a deploy pipeline, not just a demo.",
+invH:'▶ Inventory',questH:['Quest ','log'],questLead:'Every project is a cartridge. Rarity shows how far it went: live with real users, or a focused solo API.',
+achH:['Achieve','ments'],achLead:'Milestones unlocked so far. More are hidden — they unlock as the journey goes on.',achCount:n=>`${n}/??? unlocked`,
+slogan:'Keep believing. Keep walking your own path.',
+typed:'Thanks for playing! Want to team up on a back-end quest?',copy:'Copy',copied:'Copied!',copyFail:'Select the address to copy',
+footer:'Never — just saving progress.',toastH:'Achievement unlocked',toastB:'Explorer — you scrolled all the way here',
+theme:{auto:'◐ Auto',light:'☀ Light',dark:'☾ Dark'},snd:['♪ Off','♪ On'],lang:'VI'},
+vi:{navPlayer:'Nhân vật',navQuests:'Dự án',navAch:'Thành tựu',navContact:'Liên hệ',
+heroSub:'Lập trình viên back-end · Java & Spring Boot · làm ra sản phẩm có người dùng thật',start:'▶ BẮT ĐẦU',
+playerH:['Chọn ','nhân vật'],playerLead:'Một nhân vật, một class: back-end. Đang lên cấp qua việc học, dự án nhóm và những lần deploy thật.',
+sClass:'Lớp nhân vật',vClass:'Lập trình viên back-end',sGuild:'Bang hội',vGuild:'Đại học FPT · Kỹ thuật phần mềm',sLevel:'Cấp độ',vLevel:'Sinh viên năm 2',
+bio:'Mình thích phần back-end nơi tính đúng đắn là quan trọng: luồng xác thực, xử lý đồng thời, migration và test. Gần đây mình đưa LLM vào sản phẩm thật — có giới hạn lượt dùng, có provider dự phòng và pipeline deploy, không chỉ là demo.',
+invH:'▶ Túi đồ',questH:['Nhật ký ','nhiệm vụ'],questLead:'Mỗi dự án là một băng game. Độ hiếm cho biết dự án đã đi xa đến đâu: chạy thật với người dùng, hay một API tự làm.',
+achH:['Thành ','tựu'],achLead:'Những cột mốc đã mở khóa. Còn nhiều thành tựu ẩn — sẽ mở dần trên hành trình.',achCount:n=>`Đã mở khóa ${n}/???`,
+slogan:'Cứ vững tin, và tiếp tục bước trên con đường của riêng bạn.',
+typed:'Cảm ơn bạn đã ghé chơi! Cùng lập đội cho một nhiệm vụ back-end nhé?',copy:'Sao chép',copied:'Đã sao chép!',copyFail:'Hãy bôi đen địa chỉ để sao chép',
+footer:'Không đâu — chỉ đang lưu tiến trình.',toastH:'Mở khóa thành tựu',toastB:'Nhà thám hiểm — đã cuộn đến tận đây',
+theme:{auto:'◐ Tự động',light:'☀ Sáng',dark:'☾ Tối'},snd:['♪ Tắt','♪ Bật'],lang:'EN'}};
+
+/* ---------- data ---------- */
+const inv=[['Java',['core weapon','vũ khí chính'],1],['Spring Boot',['framework','framework'],1],['PostgreSQL',['pgvector too','có cả pgvector']],['MySQL',['database','cơ sở dữ liệu']],['React',['front-end','front-end']],['Docker',['containers','container']],['Flyway',['migrations','migration']],['Testcontainers',['integration tests','test tích hợp']],['GitHub Actions',['CI/CD','CI/CD']],['LLM APIs',['DeepSeek · Gemini','DeepSeek · Gemini']]];
+const icons={
+book:["11111100","12222210","12111210","12222210","12111210","12222210","11111110","01111110"],
+vault:["11111111","12222221","12111121","12122121","12111121","12222221","11111111","10000001"],
+shield:["11111111","12222221","12211221","12222221","12222221","01222210","00122100","00011000"],
+coin:["00111100","01222210","12211221","12212221","12221221","12211221","01222210","00111100"],
+rocket:["00011000","00122100","00122100","01222210","01211210","01222210","11011011","10000001"],
+flag:["11111110","12222210","12222100","12222210","10000000","10000000","10000000","10000000"],
+key:["01110000","12221000","12021111","12221212","01110101","00000000","00000000","00000000"],
+bolt:["00001110","00012210","00122100","01222111","01112210","00122100","01221000","01110000"],
+gear:["00111100","01222210","12211221","12100121","12100121","12211221","01222210","00111100"],
+lock:["00111100","01000010","01000010","11111111","12222221","12211221","12222221","11111111"],
+trophy:["11111111","12222221","12222221","01222210","00122100","00011000","00111100","01111110"]};
+const icon=k=>`<svg viewBox="0 0 8 8" shape-rendering="crispEdges">${bmp(icons[k],two)}</svg>`;
+const rar={LEGENDARY:'#ffcf5c',RARE:'#9fd4ff'};
+const quests=[
+{n:'StudyForge',r:'LEGENDARY',i:'book',st:['Live · beta','Đang chạy · beta'],
+d:['Upload a course PDF or PowerPoint and get a practice set — multiple choice, essay or mixed, in Vietnamese or English. Essay answers get AI feedback.','Tải lên PDF hoặc PowerPoint của môn học để nhận bộ câu hỏi ôn tập — trắc nghiệm, tự luận hoặc kết hợp, bằng tiếng Việt hoặc tiếng Anh. Bài tự luận được AI nhận xét.'],
+b:[['LLM calls through a hand-written Spring RestClient: DeepSeek first, Gemini or Groq as fallback','Gọi LLM qua Spring RestClient tự viết: DeepSeek là chính, Gemini hoặc Groq dự phòng'],['Per-user daily quota and admin tools before launch','Giới hạn lượt tạo mỗi ngày cho từng người dùng và công cụ admin trước khi ra mắt'],['Auto-deploy to a VPS with GitHub Actions','Tự deploy lên VPS bằng GitHub Actions']],
+k:['Java','Spring Boot','React','LLM APIs','GitHub Actions'],l:[[['▶ Play','▶ Dùng thử'],'https://studyforge.duckdns.org'],[['Source','Mã nguồn'],'https://github.com/azerc18/study-forge']]},
+{n:'LegacyVault',r:'LEGENDARY',i:'vault',st:['Live · team of 6','Đang chạy · nhóm 6 người'],
+d:["Digital legacy vault: owners encrypt their digital assets, name beneficiaries and set a dead man's switch; access unlocks only after legal verification.","Kho di sản số: chủ sở hữu mã hóa tài sản số, chỉ định người thụ hưởng và đặt dead man's switch; quyền truy cập chỉ mở sau khi được xác minh pháp lý."],
+b:[['Owned the project skeleton plus register/login, forgot-password and admin flows','Phụ trách khung dự án ban đầu cùng các luồng đăng ký/đăng nhập, quên mật khẩu và admin'],['JWT refresh endpoint and decoder config, OTP after sign-up, audit logging','Endpoint refresh JWT và cấu hình decoder, gửi OTP sau đăng ký, audit log'],['Five roles: owner, executor, beneficiary, legal verifier, admin','Năm vai trò: chủ kho, người thi hành, người thụ hưởng, người xác minh pháp lý, admin']],
+k:['Java','Spring Boot','JWT','OTP','RBAC'],l:[[['▶ Visit','▶ Truy cập'],'https://legacyvault.codes'],[['Source','Mã nguồn'],'https://github.com/azerc18/legacy-vault']]},
+{n:'User Access Management',r:'RARE',i:'shield',st:['R2S Academy · sprints','R2S Academy · theo sprint'],
+d:['Back end for user access management, built sprint by sprint with mentor code reviews.','Back-end quản lý truy cập người dùng, làm theo từng sprint với code review từ mentor.'],
+b:[['OTP flows with concurrency handling and optimistic locking','Luồng OTP có xử lý đồng thời và optimistic locking'],['Flyway migrations, integration tests on PostgreSQL with Testcontainers','Migration bằng Flyway, test tích hợp trên PostgreSQL với Testcontainers']],
+k:['Spring Boot','PostgreSQL','Flyway','Testcontainers'],l:[]},
+{n:'Personal Finance Tracker',r:'RARE',i:'coin',st:['Solo build','Tự làm'],
+d:['REST API for tracking personal income and spending.','REST API theo dõi thu chi cá nhân.'],
+b:[['Layered Spring Boot API backed by MySQL','API Spring Boot phân lớp, dùng MySQL']],
+k:['Java','Spring Boot','MySQL'],l:[[['Source','Mã nguồn'],'https://github.com/azerc18/personal-finance-tracker']]}];
+const achs=[
+{i:'rocket',t:['Shipped to production','Lên production'],w:['StudyForge','StudyForge'],d:['Took a solo project from idea to a live beta that real users log into.','Đưa một dự án tự làm từ ý tưởng thành bản beta chạy thật, có người dùng đăng nhập.']},
+{i:'flag',t:['Team launch','Ra mắt cùng đồng đội'],w:['LegacyVault','LegacyVault'],d:['Went live at legacyvault.codes with a team of six, starting from the skeleton I set up.','Lên sóng tại legacyvault.codes cùng nhóm sáu người, bắt đầu từ bộ khung mình dựng.']},
+{i:'key',t:['Gatekeeper','Người gác cổng'],w:['LegacyVault · UAM','LegacyVault · UAM'],d:['Built authentication end to end: register, login, JWT refresh, forgot-password and OTP.','Tự làm xác thực từ đầu đến cuối: đăng ký, đăng nhập, refresh JWT, quên mật khẩu và OTP.']},
+{i:'bolt',t:['AI tamer','Thuần hóa AI'],w:['StudyForge','StudyForge'],d:['Put LLMs behind a provider fallback and a per-user daily quota so the app stays up and affordable.','Đặt LLM sau cơ chế provider dự phòng và giới hạn lượt mỗi ngày để app luôn chạy mà không tốn kém.']},
+{i:'gear',t:['Pipeline builder','Kỹ sư pipeline'],w:['StudyForge','StudyForge'],d:['Every push to main deploys itself to the VPS through GitHub Actions.','Mỗi lần push lên main là tự deploy lên VPS qua GitHub Actions.']},
+{i:'shield',t:['Test guardian','Hộ vệ kiểm thử'],w:['UAM','UAM'],d:['Verified migrations and concurrency with Testcontainers on a real PostgreSQL.','Kiểm chứng migration và xử lý đồng thời bằng Testcontainers trên PostgreSQL thật.']},
+{i:'lock',lock:1,t:['First OJT placement','OJT đầu tiên'],w:['Locked','Chưa mở khóa'],d:['Next unlock: an on-the-job training role in back-end engineering.','Mở khóa tiếp theo: một vị trí OJT về back-end.']},
+{hidden:1,lock:1,t:['???','???'],w:['Hidden achievement','Thành tựu ẩn'],d:['Keep playing to reveal.','Cứ tiếp tục để khám phá.']},
+{hidden:1,lock:1,t:['???','???'],w:['Hidden achievement','Thành tựu ẩn'],d:['Keep playing to reveal.','Cứ tiếp tục để khám phá.']}];
+
+/* ---------- render (re-runs on language change) ---------- */
+let L=root.lang==='vi'?'vi':'en';const ix=()=>L==='vi'?1:0;
+const render=()=>{
+  const t=T[L],i=ix();
+  document.querySelectorAll('[data-t]').forEach(e=>{const v=t[e.dataset.t];if(typeof v==='string')e.textContent=v});
+  document.querySelectorAll('[data-h]').forEach(e=>{const [a,b]=t[e.dataset.h];e.innerHTML=`${a}<span>${b}</span>`});
+  $('langBtn').textContent=t.lang;$('langBtn').setAttribute('aria-label',L==='vi'?'Switch to English':'Chuyển sang tiếng Việt');
+  $('themeBtn').textContent=t.theme[theme];
+  $('sndBtn').textContent=t.snd[+sound];
+  $('inv').innerHTML=inv.map(([n,d,m])=>`<div class="slot px rv${m?' main':''}">${m?'<span class="tag">MAIN</span>':''}<b>${n}</b><small>${d[i]}</small></div>`).join('');
+  $('questList').innerHTML=quests.map(q=>`<article class="cart px rv" style="--r:${rar[q.r]}">
+<div class="label">${icon(q.i)}<div><h3>${q.n}</h3><span class="tag">★ ${q.r}</span></div></div>
+<div class="body"><p class="status">${q.st[i]}</p><p style="margin:0">${q.d[i]}</p><ul>${q.b.map(x=>`<li>${x[i]}</li>`).join('')}</ul>
+<div class="chips">${q.k.map(x=>`<span class="chip">${x}</span>`).join('')}</div></div>
+${q.l.length?`<div class="links">${q.l.map(([tx,u],j)=>`<a class="btn${j?' alt':''}" href="${u}">${tx[i]}</a>`).join('')}</div>`:''}</article>`).join('');
+  const got=achs.filter(a=>!a.lock).length;
+  $('achCount').textContent=t.achCount(got);
+  $('segs').innerHTML='<i></i>'.repeat(got)+'<i class="q">?</i>'.repeat(4);
+  $('achList').innerHTML=achs.map(a=>`<div class="ach rv ${a.lock?'locked':'px'}${a.hidden?' hidden':''}"><div class="ico">${a.hidden?'?':icon(a.i)}</div><div><h3>${a.t[i]}</h3><p class="when">${a.w[i]}</p><p>${a.d[i]}</p></div></div>`).join('');
+  $('typed').textContent=t.typed;
+  observeReveal();
+};
+
+/* ---------- theme: auto (system) → light → dark ---------- */
+let theme='auto';try{theme=localStorage.getItem('tl-theme')||'auto'}catch(e){}
+const applyTheme=()=>{if(theme==='auto')delete root.dataset.theme;else root.dataset.theme=theme;$('themeBtn').textContent=T[L].theme[theme];try{localStorage.setItem('tl-theme',theme)}catch(e){}};
+$('themeBtn').addEventListener('click',()=>{theme={auto:'light',light:'dark',dark:'auto'}[theme];applyTheme()});
+$('langBtn').addEventListener('click',()=>{L=L==='vi'?'en':'vi';root.lang=L;try{localStorage.setItem('tl-lang',L)}catch(e){}render()});
+
+/* ---------- 8-bit sound (on by default) ---------- */
+let sound=true;try{sound=localStorage.getItem('tl-snd')!=='0'}catch(e){}
+let ac=null;
+const beep=(notes,type='square',vol=.06)=>{try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();
+let t=ac.currentTime;notes.forEach(([f,d])=>{const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(ac.destination);o.start(t);o.stop(t+d);t+=d*.9})}catch(e){}};
+const SFX={click:[[880,.05],[1320,.06]],link:[[660,.05],[990,.08]],on:[[523,.07],[659,.07],[784,.07],[1047,.12]],copy:[[988,.06],[1319,.1]],toggle:[[440,.05],[660,.06]]};
+const setSnd=()=>{$('sndBtn').textContent=T[L].snd[+sound];$('sndBtn').setAttribute('aria-pressed',sound);try{localStorage.setItem('tl-snd',sound?'1':'0')}catch(e){}};
+$('sndBtn').addEventListener('click',()=>{sound=!sound;setSnd();if(sound)beep(SFX.on)});
+document.addEventListener('click',e=>{if(!sound)return;const el=e.target.closest('a,button');if(!el||el.id==='sndBtn')return;
+beep(el.id==='copy'?SFX.copy:el.classList.contains('ctl')?SFX.toggle:el.tagName==='A'?SFX.link:SFX.click)});
+
+/* ---------- reveal on scroll ---------- */
+const revealIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target,sib=[...el.parentElement.children].filter(c=>c.classList.contains('rv'));el.style.transitionDelay=reduce?'0s':`${Math.min(sib.indexOf(el),6)*0.08}s`;el.classList.add('in');revealIO.unobserve(el)}}),{threshold:.12});
+function observeReveal(){document.querySelectorAll('.rv:not(.in)').forEach(el=>revealIO.observe(el))}
+
+/* ---------- hero scene with parallax layers ---------- */
+const W=320,H=180;let sky='',far='',near='',hill='',field='',clouds='';
+const sk=['s1','s2','s3','s4','s5','s6'],bands=[0,26,48,68,86,100];
+sk.forEach((c,i)=>{sky+=R(c,0,bands[i],W,H)});
+for(let i=1;i<6;i++)for(let x=0;x<W;x+=8)if((x/8+i)%2)sky+=R(sk[i],x,bands[i]-2,4,2);
+for(let i=0;i<46;i++){const x=Math.floor(rnd()*W),y=Math.floor(rnd()*58);sky+=R(i%3?'st':`st ${i%2?'tw':'tw2'}`,x,y,1,1)}
+const cx=236,cy=74,r=16;for(let y=-r;y<=r;y++){const w=Math.floor(Math.sqrt(r*r-y*y));sky+=R('sun',cx-w,cy+y,w*2,1)}
+const cloud=(x,y,w)=>R('cl',x,y,w,4)+R('cl',x+4,y-3,w-12,3)+R('cl',x+Math.floor(w*.3),y-6,Math.floor(w*.35),3)+R('cl2',x+2,y+4,w-4,2);
+clouds=cloud(20,34,46)+cloud(120,22,34)+cloud(250,44,40)+cloud(176,60,28)+cloud(-30,70,36);
+for(let x=0;x<W;x+=2){const y=Math.round(96-16*Math.sin(x/37)-9*Math.sin(x/13+1));far+=R('m1',x,y,2,H-y)}
+for(let x=0;x<W;x+=2){const y=Math.round(120-12*Math.sin(x/29+2)-5*Math.sin(x/9));near+=R('m2',x,y,2,H-y)}
+for(let x=0;x<150;x+=2){const y=Math.round(124-14*Math.sin((x+10)/48));hill+=R('hill',x,y,2,H-y)}
+[[54,104,30,10],[50,96,8,18],[80,96,8,18],[62,90,12,14],[66,82,4,8],[50,94,2,2],[54,94,2,2],[80,94,2,2],[84,94,2,2],[62,88,2,2],[66,88,4,2],[72,88,2,2]].forEach(([x,y,w,h])=>hill+=R('tree',x,y,w,h));
+[[66,94],[53,100],[83,100],[60,106],[74,106]].forEach(([x,y])=>hill+=R('win tw',x,y,2,2));
+const tree=(x,b,h)=>{let o='';for(let i=0;i<h;i+=2){const w=Math.max(1,Math.round(3*Math.sin(Math.PI*(i+2)/(h+2))));o+=R('tree',x-w,b-i,w*2,2)}return o};
+hill+=tree(36,118,22)+tree(44,120,16)+tree(100,116,24)+tree(108,118,14)+tree(130,124,18);
+field=R('f0',0,134,W,60);
+for(let i=0;i<1100;i++){const t=rnd(),y=134+Math.floor(t*t*46),x=Math.floor(rnd()*W),sz=y>165?2:1;field+=R(['f1','f2','f3'][i%3],x,y,sz,sz+(y>160?1:0))}
+$('scene').innerHTML=`<g id="Lsky">${sky}</g><g id="Lcl"><g class="drift">${clouds}</g></g><g id="Lfar">${far}</g><g id="Lnear">${near}</g><g id="Lhill">${hill}</g><g>${field}</g>`;
+
+/* ---------- avatar: pixel sprite, drawn fallback ---------- */
+const av=["0000000000000000","0000011111100000","0000111111110000","0001111111111000","0001122222211000","0001222222221000","0001232222321000","0001222222221000","0000122442210000","0000012222100000","0000555555550000","0005555665555000","0005555665555000","0005525555255000","0000555555550000","0000770000770000"];
+$('avatar').innerHTML=bmp(av,{1:'#2a1b5e',2:'#ffd9b8',3:'#22154d',4:'#e8558f',5:'#7b4fd6',6:'#ffcf5c',7:'#22154d'});
+const sp=$('sprite');
+const useSprite=()=>{sp.hidden=false;$('avatar').style.display='none'};
+if(sp.complete&&sp.naturalWidth)useSprite();else sp.addEventListener('load',useSprite);
+
+
+/* ---------- toast ---------- */
+$('trophy').innerHTML=bmp(icons.trophy,two);
+let toasted=false;
+const toastIO=new IntersectionObserver(es=>{if(es[0].isIntersecting&&!toasted){toasted=true;toastIO.disconnect();const t=$('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4200)}},{threshold:.5});
+toastIO.observe($('road'));
+
+/* ---------- typewriter for contact ---------- */
+const typeIO=new IntersectionObserver(es=>{if(es[0].isIntersecting&&!reduce){typeIO.disconnect();const el=$('typed'),full=T[L].typed;el.textContent='';let n=0;const tm=setInterval(()=>{el.textContent=full.slice(0,++n);if(n>=full.length)clearInterval(tm)},38)}});
+typeIO.observe($('typed'));
+$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText('phuoctoanletran@gmail.com');$('copied').textContent=T[L].copied}catch(e){$('copied').textContent=T[L].copyFail}});
+
+/* ---------- scroll: XP bar, hero parallax ---------- */
+let ticking=false;
+const onScroll=()=>{ticking=false;const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;
+$('xp').style.width=`${max>0?y/max*100:0}%`;
+if(!reduce){const hh=$('top').offsetHeight;if(y<hh){const k=y/hh;
+[['Lcl',10],['Lfar',16],['Lnear',24],['Lhill',32]].forEach(([id,d])=>$(id).setAttribute('transform',`translate(0 ${(k*d).toFixed(1)})`))}}
+};
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+addEventListener('resize',onScroll);
+
+render();applyTheme();setSnd();onScroll();
+}
+</script>
+</body>
+</html>
