@@ -159,14 +159,15 @@ dialog.quest{width:min(1000px,94vw);max-height:90vh;padding:0;border:0;color:var
 dialog.quest[open]{display:flex;animation:pop .35s steps(4) both}
 dialog.quest::backdrop{background:rgba(8,5,22,.72)}
 .qbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 10px 8px 18px;background:var(--line);color:#ffcf5c;font-family:var(--hf);font-size:calc(10px*var(--k))}
-.qmain{display:grid;grid-template-columns:210px minmax(0,1fr);min-height:0;flex:1}
+.qmain{display:grid;grid-template-columns:236px minmax(0,1fr);min-height:0;flex:1}
 .qbody{overflow-y:auto;padding:22px clamp(16px,3vw,30px) 28px;font-family:Inter,system-ui,sans-serif;min-height:0}
 .qnav{display:flex;flex-direction:column;gap:2px;padding:18px 10px;background:var(--band);border-right:3px solid var(--line);overflow-y:auto}
 .qnav-h{font-family:var(--hf);font-size:calc(10px*var(--k));color:var(--gold);margin:0 8px 12px}
-.qnav a{position:relative;display:block;padding:10px 12px 10px 24px;font-family:Inter,system-ui,sans-serif;font-size:15px;color:var(--ink);text-decoration:none;min-height:40px}
+.qnav a{position:relative;display:block;padding:9px 10px 9px 24px;font-family:Inter,system-ui,sans-serif;font-size:15px;white-space:nowrap;color:var(--ink);text-decoration:none;min-height:40px}
+.qnav a b{display:block;font-weight:600}.qnav a small{display:block;font-size:12px;color:var(--mute);margin-top:2px}
 .qnav a:hover{background:var(--panel)}
-.qnav a.on{background:var(--panel);color:var(--acc);font-weight:600;box-shadow:inset 3px 0 0 var(--acc)}
-.qnav a.on::before{content:"";position:absolute;left:10px;top:50%;margin-top:-4px;border:4px solid transparent;border-left-color:var(--gold)}
+.qnav a.on{background:var(--panel);color:var(--acc);box-shadow:inset 3px 0 0 var(--acc)}
+.qnav a.on::before{content:"";position:absolute;left:10px;top:15px;border:4px solid transparent;border-left-color:var(--gold)}
 .qnav a:focus-visible{outline:3px dashed var(--gold);outline-offset:-3px}
 .qhead{display:flex;gap:16px;align-items:center;padding:14px;background:var(--r);color:#1a0f3d;box-shadow:inset 0 -6px 0 rgba(0,0,0,.18);margin-bottom:22px}
 .qhead svg{width:56px;height:56px;flex:none;background:rgba(255,255,255,.35);padding:5px}
@@ -203,7 +204,7 @@ dialog.quest::backdrop{background:rgba(8,5,22,.72)}
 @media(max-width:600px){.boss .bc{border-right:0;border-bottom:3px dashed var(--line)}}
 @media(max-width:760px){.qmain{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
 .qnav{flex-direction:row;overflow-x:auto;overflow-y:hidden;padding:8px;border-right:0;border-bottom:3px solid var(--line);gap:4px}
-.qnav-h{display:none}.qnav a{flex:none;white-space:nowrap;padding:8px 12px 8px 20px;font-size:14px}.qnav a.on{box-shadow:inset 0 -3px 0 var(--acc)}.qnav a.on::before{left:7px}}
+.qnav-h{display:none}.qnav a{flex:none;white-space:nowrap;padding:8px 12px 8px 20px;font-size:14px}.qnav a.on{box-shadow:inset 0 -3px 0 var(--acc)}.qnav a.on::before{left:7px}.qnav a small{display:none}}
 /* achievements */
 .ach-total{padding:16px 20px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-bottom:30px}
 .ach-total span{font-size:calc(11px*var(--k));color:var(--gold)}
@@ -377,7 +378,7 @@ invH:'▶ Inventory — Tech Stack',questH:['Quests ','— Projects'],questLead:
 achH:['Achieve','ments'],achLead:'Milestones unlocked so far. More are hidden — they unlock as the journey goes on.',achCount:n=>`${n}/??? unlocked`,
 slogan:'Keep believing. Keep walking your own path.',
 typed:'Thanks for playing! Want to team up on a back-end quest?',copy:'Copy',copied:'Copied!',copyFail:'Select the address to copy',
-footer:'Never — just saving progress.',openQ:'Quest info ▸',caseStudy:'Case study ▸',qinfo:'Quest info',nOverview:'Overview',nArch:'Architecture',nBoss:'Technical challenges',nWin:'Testing & results',nStack:'Tech stack',nLinks:'Source code',close:'✕ Close',obj:'Objective',role:'My role',shots:'Screenshots',arch:'Architecture map',boss:'Boss fights — challenges & solutions',challenge:'Challenge',solution:'Solution',win:'Rewards — results',loot:'Loot — tech stack',soon:'Screenshot coming soon',noUI:'Back-end service — no user interface to show.',writeup:'Full write-up coming soon.',toastH:'Achievement unlocked',toastB:'Explorer — you scrolled all the way here',
+footer:'Never — just saving progress.',openQ:'Quest info ▸',caseStudy:'Case study ▸',qinfo:'Quest info',nOverview:'Objective',sOverview:'Overview · role · screens',nArch:'Architecture map',sArch:'How the system fits',nBoss:'Boss fights',sBoss:'Challenges & solutions',nWin:'Rewards & loot',sWin:'Results · stack · source',nLinks:'Source code',close:'✕ Close',obj:'Objective',role:'My role',shots:'Screenshots',arch:'Architecture map',boss:'Boss fights — challenges & solutions',challenge:'Challenge',solution:'Solution',win:'Rewards — results',loot:'Loot — tech stack',soon:'Screenshot coming soon',noUI:'Back-end service — no user interface to show.',writeup:'Full write-up coming soon.',toastH:'Achievement unlocked',toastB:'Explorer — you scrolled all the way here',
 theme:{auto:'◐ Auto',light:'☀ Light',dark:'☾ Dark'},snd:['♪ Off','♪ On'],lang:'VI'},
 vi:{navPlayer:'Nhân vật',navQuests:'Dự án',navAch:'Thành tựu',navContact:'Liên hệ',
 heroSub:'Lập trình viên back-end Java · Spring Boot',open:'Đang tìm vị trí thực tập back-end',tagline:'Xây dựng hệ thống back-end bảo mật, ổn định và được kiểm thử kỹ.',hs1:'Học bổng · 4 năm',hs2:'Dự án đã ra mắt',hs3:'Hệ thống xác thực đã xây',hs4:'IELTS',start:'▶ BẮT ĐẦU',ctaQuests:'▶ Xem dự án',ctaCV:'⬇ Tải CV',
@@ -388,7 +389,7 @@ invH:'▶ Túi đồ — Công nghệ',questH:['Nhiệm vụ ','— Dự án'],q
 achH:['Thành ','tựu'],achLead:'Những cột mốc đã mở khóa. Còn nhiều thành tựu ẩn — sẽ mở dần trên hành trình.',achCount:n=>`Đã mở khóa ${n}/???`,
 slogan:'Cứ vững tin, và tiếp tục bước trên con đường của riêng bạn.',
 typed:'Cảm ơn bạn đã ghé chơi! Cùng lập đội cho một nhiệm vụ back-end nhé?',copy:'Sao chép',copied:'Đã sao chép!',copyFail:'Hãy bôi đen địa chỉ để sao chép',
-footer:'Không đâu — chỉ đang lưu tiến trình.',openQ:'Xem nhiệm vụ ▸',caseStudy:'Chi tiết ▸',qinfo:'Thông tin nhiệm vụ',nOverview:'Tổng quan',nArch:'Kiến trúc',nBoss:'Khó khăn kỹ thuật',nWin:'Kiểm thử & kết quả',nStack:'Công nghệ',nLinks:'Mã nguồn',close:'✕ Đóng',obj:'Mục tiêu',role:'Vai trò của tôi',shots:'Ảnh sản phẩm',arch:'Sơ đồ kiến trúc',boss:'Đánh boss — khó khăn & giải pháp',challenge:'Khó khăn',solution:'Giải pháp',win:'Phần thưởng — kết quả',loot:'Trang bị — công nghệ',soon:'Ảnh sẽ được cập nhật',noUI:'Service back-end — không có giao diện để hiển thị.',writeup:'Bài viết chi tiết sẽ được cập nhật.',toastH:'Mở khóa thành tựu',toastB:'Nhà thám hiểm — đã cuộn đến tận đây',
+footer:'Không đâu — chỉ đang lưu tiến trình.',openQ:'Xem nhiệm vụ ▸',caseStudy:'Chi tiết ▸',qinfo:'Thông tin nhiệm vụ',nOverview:'Mục tiêu',sOverview:'Tổng quan · vai trò · ảnh',nArch:'Sơ đồ kiến trúc',sArch:'Cách hệ thống vận hành',nBoss:'Đánh boss',sBoss:'Khó khăn & giải pháp',nWin:'Phần thưởng',sWin:'Kết quả · công nghệ · mã nguồn',nLinks:'Mã nguồn',close:'✕ Đóng',obj:'Mục tiêu',role:'Vai trò của tôi',shots:'Ảnh sản phẩm',arch:'Sơ đồ kiến trúc',boss:'Đánh boss — khó khăn & giải pháp',challenge:'Khó khăn',solution:'Giải pháp',win:'Phần thưởng — kết quả',loot:'Trang bị — công nghệ',soon:'Ảnh sẽ được cập nhật',noUI:'Service back-end — không có giao diện để hiển thị.',writeup:'Bài viết chi tiết sẽ được cập nhật.',toastH:'Mở khóa thành tựu',toastB:'Nhà thám hiểm — đã cuộn đến tận đây',
 theme:{auto:'◐ Tự động',light:'☀ Sáng',dark:'☾ Tối'},snd:['♪ Tắt','♪ Bật'],lang:'EN'}};
 
 /* ---------- data ---------- */
@@ -606,25 +607,31 @@ const sec=(h,body)=>body?`<section class="qsec"><h4>${h}</h4>${body}</section>`:
 const shots=D.shots.length?`<div class="shots">${D.shots.map((src,k)=>`<figure class="shot"><a href="${src}" target="_blank" rel="noopener" aria-label="${q.n} screenshot ${k+1} — full size"><img src="${src}" alt="${q.n} screenshot ${k+1}" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt=1;const p=this.src.replace(/\.jpg$/,'.png');this.parentNode.href=p;this.src=p}else this.closest('.shot').classList.add('missing')"></a><span>${t.soon}</span></figure>`).join('')}</div>`:`<p class="prose muted">${t.noUI}</p>`;
 const boss=D.boss.length?`<ol class="boss">${D.boss.map(([c,s],k)=>`<li><div class="bc"><b>${t.challenge} ${k+1}</b><p>${c[i]}</p></div><div class="bs"><b>${t.solution}</b><p>${s[i]}</p></div></li>`).join('')}</ol>`:'';
 const win=D.win.length?`<ul class="win">${D.win.map(w=>`<li>${w[i]}</li>`).join('')}</ul>`:'';
-const S=[];const add=(id,label,html)=>{if(html){S.push([id,label]);return `<section class="qpart" id="${id}">${html}</section>`}return ''};
-$('qbody').innerHTML=add('q-overview',t.nOverview,`<div class="qhead" style="--r:${rar[q.r]}">${icon(q.i)}<div><h3 id="qtitle">${q.n}</h3><p><span class="tag">★ ${q.r}</span> · ${q.st[i]}</p></div></div>
+const S=[];const add=(id,label,sub,html)=>{if(html){S.push([id,label,sub]);return `<section class="qpart" id="${id}">${html}</section>`}return ''};
+$('qbody').innerHTML=add('q-overview',t.nOverview,t.sOverview,`<div class="qhead" style="--r:${rar[q.r]}">${icon(q.i)}<div><h3 id="qtitle">${q.n}</h3><p><span class="tag">★ ${q.r}</span> · ${q.st[i]}</p></div></div>
 <div class="qgrid"><div>${sec(t.obj,`<p class="prose">${D.obj[i]}</p>`)}${sec(t.role,`<p class="prose">${D.role[i]}</p>`)}</div><div>${sec(t.shots,shots)}</div></div>`)
-+add('q-arch',t.nArch,sec(t.arch,`<div class="map">${drawMap(D.map)}</div>`))
-+add('q-boss',t.nBoss,boss&&sec(t.boss,boss))
-+add('q-win',t.nWin,win&&sec(t.win,win))
-+(!boss&&!win?`<p class="prose muted">${t.writeup}</p>`:'')
-+add('q-loot',t.nStack,sec(t.loot,`<div class="chips">${D.stack.map(x=>`<span class="chip">${x}</span>`).join('')}</div>`))
-+add('q-links',t.nLinks,q.l.length&&sec(t.nLinks,`<div class="links">${q.l.map(([tx,u],j)=>`<a class="btn${j?' alt':''}" href="${u}" target="_blank" rel="noopener noreferrer">${tx[i]} ↗</a>`).join('')}</div>`));
-$('qbarT').textContent='▣ '+q.n;$('qnav').innerHTML=`<p class="qnav-h">${t.qinfo}</p>`+S.map(([id,l],k)=>`<a href="#${id}" data-sec="${id}"${k?'':' class="on" aria-current="true"'}>${l}</a>`).join('');
-const dlg=$('quest');if(!dlg.open){dlg.showModal();$('qbody').scrollTop=0}spy();if(sound)beep(SFX.on)};
++add('q-arch',t.nArch,t.sArch,sec(t.arch,`<div class="map">${drawMap(D.map)}</div>`))
++add('q-boss',t.nBoss,t.sBoss,boss&&sec(t.boss,boss))
++add('q-win',t.nWin,t.sWin,(win?sec(t.win,win):`<p class="prose muted">${t.writeup}</p>`)
+ +sec(t.loot,`<div class="chips">${D.stack.map(x=>`<span class="chip">${x}</span>`).join('')}</div>`)
+ +(q.l.length?sec(t.nLinks,`<div class="links">${q.l.map(([tx,u],j)=>`<a class="btn${j?' alt':''}" href="${u}" target="_blank" rel="noopener noreferrer">${tx[i]} ↗</a>`).join('')}</div>`):''))
++'<div class="qend" id="qend"></div>';
+$('qbarT').textContent='▣ '+q.n;
+$('qnav').innerHTML=`<p class="qnav-h">${t.qinfo}</p>`+S.map(([id,l,sub],k)=>`<a href="#${id}" data-sec="${id}"${k?'':' class="on" aria-current="true"'}><b>${l}</b><small>${sub}</small></a>`).join('');
+const dlg=$('quest');if(!dlg.open){dlg.showModal();$('qbody').scrollTop=0}fitEnd();spy();if(sound)beep(SFX.on)};
 $('qclose').addEventListener('click',()=>$('quest').close());
-/* quest nav: jump to a section, highlight the one in view */
-$('qnav').addEventListener('click',e=>{const a=e.target.closest('a[data-sec]');if(!a)return;e.preventDefault();const el=document.getElementById(a.dataset.sec);
-$('qbody').scrollTo({top:el.offsetTop-$('qbody').offsetTop-8,behavior:reduce?'auto':'smooth'});if(sound)beep(SFX.toggle)});
+/* quest nav: jump to a section, highlight the one in view.
+   A spacer after the last section lets even short final sections scroll to the top, so every link lands on its own section. */
+const fitEnd=()=>{const b=$('qbody'),parts=b.querySelectorAll('.qpart'),end=$('qend');if(!parts.length||!end)return;end.style.height='0px';
+const last=parts[parts.length-1];end.style.height=Math.max(0,b.clientHeight-last.offsetHeight-48)+'px'};
+const topOf=el=>el.offsetTop-$('qbody').offsetTop-8;
+$('qnav').addEventListener('click',e=>{const a=e.target.closest('a[data-sec]');if(!a)return;e.preventDefault();
+$('qbody').scrollTo({top:topOf(document.getElementById(a.dataset.sec)),behavior:reduce?'auto':'smooth'});mark(a.dataset.sec);if(sound)beep(SFX.toggle)});
+const mark=id=>$('qnav').querySelectorAll('a').forEach(a=>{const on=a.dataset.sec===id;a.classList.toggle('on',on);on?a.setAttribute('aria-current','true'):a.removeAttribute('aria-current');
+if(on&&getComputedStyle($('qnav')).overflowX==='auto')a.scrollIntoView({block:'nearest',inline:'nearest'})});
 const spy=()=>{const b=$('qbody'),parts=[...b.querySelectorAll('.qpart')];if(!parts.length)return;let cur=parts[0].id;
-const atEnd=b.scrollTop+b.clientHeight>=b.scrollHeight-4;
-parts.forEach(p=>{if(p.offsetTop-b.offsetTop-80<=b.scrollTop)cur=p.id});if(atEnd)cur=parts[parts.length-1].id;
-$('qnav').querySelectorAll('a').forEach(a=>{const on=a.dataset.sec===cur;a.classList.toggle('on',on);on?a.setAttribute('aria-current','true'):a.removeAttribute('aria-current');if(on&&getComputedStyle($('qnav')).overflowX==='auto')a.scrollIntoView({block:'nearest',inline:'nearest'})})};
+parts.forEach(p=>{if(topOf(p)-60<=b.scrollTop)cur=p.id});mark(cur)};
+addEventListener('resize',()=>{if($('quest').open){fitEnd();spy()}});
 $('qbody').addEventListener('scroll',()=>requestAnimationFrame(spy),{passive:true});
 $('quest').addEventListener('click',e=>{if(e.target===$('quest'))$('quest').close()});
 $('quest').addEventListener('close',()=>{openQ=null});
