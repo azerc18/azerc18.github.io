@@ -166,7 +166,7 @@ footer b{font-size:calc(9px*var(--k));color:#ffcf5c}
 <nav>
   <a class="logo" href="#top">TOAN.LE</a>
   <a href="#player" data-t="navPlayer">Player</a><a href="#quests" data-t="navQuests">Quests</a><a href="#achievements" data-t="navAch">Achievements</a><a href="#contact" data-t="navContact">Contact</a>
-  <div class="ctls"><button class="ctl" id="langBtn" type="button"></button><button class="ctl" id="themeBtn" type="button"></button><button class="ctl" id="sndBtn" type="button" aria-pressed="false"></button><button class="ctl" id="bgmBtn" type="button" aria-pressed="false"></button></div>
+  <div class="ctls"><button class="ctl" id="langBtn" type="button"></button><button class="ctl" id="themeBtn" type="button"></button><button class="ctl" id="sndBtn" type="button" aria-pressed="false"></button></div>
   <div class="xp" aria-hidden="true"><i id="xp"></i></div>
 </nav>
 
@@ -262,7 +262,7 @@ achH:['Achieve','ments'],achLead:'Milestones unlocked so far. More are hidden �
 slogan:'Keep believing. Keep walking your own path.',
 typed:'Thanks for playing! Want to team up on a back-end quest?',copy:'Copy',copied:'Copied!',copyFail:'Select the address to copy',
 footer:'Never — just saving progress.',toastH:'Achievement unlocked',toastB:'Explorer — you scrolled all the way here',
-theme:{auto:'◐ Auto',light:'☀ Light',dark:'☾ Dark'},snd:['♪ Off','♪ On'],bgm:['♫ Music off','♫ Music on'],lang:'VI'},
+theme:{auto:'◐ Auto',light:'☀ Light',dark:'☾ Dark'},snd:['♪ Off','♪ On'],lang:'VI'},
 vi:{navPlayer:'Nhân vật',navQuests:'Dự án',navAch:'Thành tựu',navContact:'Liên hệ',
 heroSub:'Lập trình viên back-end · Java & Spring Boot · làm ra sản phẩm có người dùng thật',start:'▶ BẮT ĐẦU',
 playerH:['Chọn ','nhân vật'],playerLead:'Một nhân vật, một class: back-end. Đang lên cấp qua việc học, dự án nhóm và những lần deploy thật.',
@@ -273,7 +273,7 @@ achH:['Thành ','tựu'],achLead:'Những cột mốc đã mở khóa. Còn nhi�
 slogan:'Cứ vững tin, và tiếp tục bước trên con đường của riêng bạn.',
 typed:'Cảm ơn bạn đã ghé chơi! Cùng lập đội cho một nhiệm vụ back-end nhé?',copy:'Sao chép',copied:'Đã sao chép!',copyFail:'Hãy bôi đen địa chỉ để sao chép',
 footer:'Không đâu — chỉ đang lưu tiến trình.',toastH:'Mở khóa thành tựu',toastB:'Nhà thám hiểm — đã cuộn đến tận đây',
-theme:{auto:'◐ Tự động',light:'☀ Sáng',dark:'☾ Tối'},snd:['♪ Tắt','♪ Bật'],bgm:['♫ Tắt nhạc','♫ Bật nhạc'],lang:'EN'}};
+theme:{auto:'◐ Tự động',light:'☀ Sáng',dark:'☾ Tối'},snd:['♪ Tắt','♪ Bật'],lang:'EN'}};
 
 /* ---------- data ---------- */
 const inv=[['Java',['core weapon','vũ khí chính'],1],['Spring Boot',['framework','framework'],1],['PostgreSQL',['pgvector too','có cả pgvector']],['MySQL',['database','cơ sở dữ liệu']],['Docker',['containers','container']],['Flyway',['migrations','migration']],['Testcontainers',['integration tests','test tích hợp']],['GitHub Actions',['CI/CD','CI/CD']],['LLM APIs',['DeepSeek · Gemini','DeepSeek · Gemini']]];
@@ -337,7 +337,6 @@ const render=()=>{
   $('langBtn').textContent=t.lang;$('langBtn').setAttribute('aria-label',L==='vi'?'Switch to English':'Chuyển sang tiếng Việt');
   $('themeBtn').textContent=t.theme[theme];
   $('sndBtn').textContent=t.snd[+sound];
-  $('bgmBtn').textContent=t.bgm[+bgmOn];
   $('titles').innerHTML=titles.map((x,n)=>`<span class="title-badge" tabindex="0" aria-describedby="tip${n}">${icon(x.i)}${x.t[i]}<span class="tip px" role="tooltip" id="tip${n}"><b>${x.h[i]}</b>${x.tip[i]}</span></span>`).join('');
   $('inv').innerHTML=inv.map(([n,d,m])=>`<div class="slot px rv${m?' main':''}">${m?'<span class="tag">MAIN</span>':''}<b>${n}</b><small>${d[i]}</small></div>`).join('');
   $('questList').innerHTML=quests.map(q=>`<article class="cart px rv" style="--r:${rar[q.r]}">
@@ -369,26 +368,6 @@ const setSnd=()=>{$('sndBtn').textContent=T[L].snd[+sound];$('sndBtn').setAttrib
 $('sndBtn').addEventListener('click',()=>{sound=!sound;setSnd();if(sound)beep(SFX.on)});
 document.addEventListener('click',e=>{if(!sound)return;const el=e.target.closest('a,button');if(!el||el.id==='sndBtn')return;
 beep(el.id==='copy'?SFX.copy:el.classList.contains('ctl')?SFX.toggle:el.tagName==='A'?SFX.link:SFX.click)});
-
-/* ---------- background music: music.mp3 looped, quiet ---------- */
-let bgmOn=true;try{bgmOn=localStorage.getItem('tl-bgm')!=='0'}catch(e){}
-const BGM_VOL=.35;let bgmGain=null,bgmBuf=null,bgmSrc=null,bgmEl=null,loading=null,playing=false;
-const ensureAC=()=>{ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();return ac};
-/* Web Audio loop is gapless; if the file can't be fetched (e.g. opened from disk) fall back to an <audio> element */
-const loadBGM=()=>loading||(loading=fetch('music.mp3').then(r=>{if(!r.ok)throw 0;return r.arrayBuffer()}).then(d=>ensureAC().decodeAudioData(d)).then(buf=>{bgmBuf=buf}).catch(()=>{bgmEl=new Audio('music.mp3');bgmEl.loop=true;bgmEl.volume=0}));
-const fade=(to,sec)=>{if(bgmGain){bgmGain.gain.cancelScheduledValues(ac.currentTime);bgmGain.gain.setTargetAtTime(to,ac.currentTime,sec/3)}
-else if(bgmEl){const from=bgmEl.volume,t0=performance.now();const f=()=>{const k=Math.min(1,(performance.now()-t0)/(sec*1000));bgmEl.volume=from+(to-from)*k;if(k<1)requestAnimationFrame(f);else if(!to)bgmEl.pause()};f()}};
-const startBGM=()=>{if(playing)return;playing=true;ensureAC();loadBGM().then(()=>{if(!playing)return;
-if(bgmBuf){if(!bgmGain){bgmGain=ac.createGain();bgmGain.gain.value=0;bgmGain.connect(ac.destination)}
-if(!bgmSrc){bgmSrc=ac.createBufferSource();bgmSrc.buffer=bgmBuf;bgmSrc.loop=true;bgmSrc.connect(bgmGain);bgmSrc.start()}
-ac.resume();fade(BGM_VOL,1.2)}else if(bgmEl){bgmEl.play().then(()=>fade(BGM_VOL,1.2)).catch(()=>{playing=false})}})};
-const stopBGM=()=>{if(!playing)return;playing=false;fade(0,.4)};
-const setBgm=()=>{$('bgmBtn').textContent=T[L].bgm[+bgmOn];$('bgmBtn').setAttribute('aria-pressed',bgmOn);try{localStorage.setItem('tl-bgm',bgmOn?'1':'0')}catch(e){}};
-$('bgmBtn').addEventListener('click',()=>{bgmOn=!bgmOn;setBgm();bgmOn?startBGM():stopBGM()});
-/* browsers only allow audio after a click or key press, so music starts on the first one */
-const kick=e=>{removeEventListener('pointerdown',kick);removeEventListener('keydown',kick);if(bgmOn&&!(e.target.closest&&e.target.closest('#bgmBtn')))startBGM()};
-addEventListener('pointerdown',kick);addEventListener('keydown',kick);
-document.addEventListener('visibilitychange',()=>{if(document.hidden)stopBGM();else if(bgmOn&&ac)startBGM()});
 
 /* ---------- reveal on scroll ---------- */
 const revealIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target,sib=[...el.parentElement.children].filter(c=>c.classList.contains('rv'));el.style.transitionDelay=reduce?'0s':`${Math.min(sib.indexOf(el),6)*0.08}s`;el.classList.add('in');revealIO.unobserve(el)}}),{threshold:.12});
@@ -443,7 +422,7 @@ if(!reduce){const hh=$('top').offsetHeight;if(y<hh){const k=y/hh;
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
 addEventListener('resize',onScroll);
 
-render();applyTheme();setSnd();setBgm();onScroll();
+render();applyTheme();setSnd();onScroll();
 }
 </script>
 </body>
