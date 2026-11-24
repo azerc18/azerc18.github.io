@@ -231,8 +231,8 @@ footer b{font-size:calc(9px*var(--k));color:#ffcf5c}
     <p id="typed" aria-live="polite"></p>
     <div class="opts">
       <div class="opt"><b>▶ Email</b><span>phuoctoanletran@gmail.com</span><button class="btn" id="copy" type="button" data-t="copy"></button><span id="copied"></span></div>
-      <div class="opt"><b>▶ GitHub</b><a href="https://github.com/azerc18">github.com/azerc18</a></div>
-      <div class="opt"><b>▶ LinkedIn</b><a href="https://www.linkedin.com/in/toanle-backend">linkedin.com/in/toanle-backend</a></div>
+      <div class="opt"><b>▶ GitHub</b><a href="https://github.com/azerc18" target="_blank" rel="noopener noreferrer">github.com/azerc18</a></div>
+      <div class="opt"><b>▶ LinkedIn</b><a href="https://www.linkedin.com/in/toanle-backend" target="_blank" rel="noopener noreferrer">linkedin.com/in/toanle-backend</a></div>
     </div>
   </div>
 </section>
@@ -325,8 +325,8 @@ const achs=[
 {i:'gear',t:['Pipeline builder','Kỹ sư pipeline'],w:['StudyForge','StudyForge'],d:['Every push to main deploys itself to the VPS through GitHub Actions.','Mỗi lần push lên main là tự deploy lên VPS qua GitHub Actions.']},
 {i:'shield',t:['Test guardian','Hộ vệ kiểm thử'],w:['UAM','UAM'],d:['Verified migrations and concurrency with Testcontainers on a real PostgreSQL.','Kiểm chứng migration và xử lý đồng thời bằng Testcontainers trên PostgreSQL thật.']},
 {i:'lock',lock:1,t:['First OJT placement','OJT đầu tiên'],w:['Locked','Chưa mở khóa'],d:['Next unlock: an on-the-job training role in back-end engineering.','Mở khóa tiếp theo: một vị trí OJT về back-end.']},
-{hidden:1,lock:1,t:['???','???'],w:['Hidden achievement','Thành tựu ẩn'],d:['Keep playing to reveal.','Cứ tiếp tục để khám phá.']},
-{hidden:1,lock:1,t:['???','???'],w:['Hidden achievement','Thành tựu ẩn'],d:['Keep playing to reveal.','Cứ tiếp tục để khám phá.']}];
+{hidden:1,lock:1,t:['???','???'],w:['Hidden achievement','Thành tựu ẩn'],d:['Still exploring… this one is waiting somewhere down the road.','Vẫn đang khám phá… thành tựu này đang chờ ở đâu đó phía trước.']},
+{hidden:1,lock:1,t:['???','???'],w:['Hidden achievement','Thành tựu ẩn'],d:['Exploring new lands — check back after the next quest.','Đang khám phá vùng đất mới — quay lại sau nhiệm vụ tiếp theo nhé.']}];
 
 /* ---------- render (re-runs on language change) ---------- */
 let L=root.lang==='vi'?'vi':'en';const ix=()=>L==='vi'?1:0;
@@ -343,7 +343,7 @@ const render=()=>{
 <div class="label">${icon(q.i)}<div><h3>${q.n}</h3><span class="tag">★ ${q.r}</span></div></div>
 <div class="body"><p class="status">${q.st[i]}</p><p style="margin:0">${q.d[i]}</p><ul>${q.b.map(x=>`<li>${x[i]}</li>`).join('')}</ul>
 <div class="chips">${q.k.map(x=>`<span class="chip">${x}</span>`).join('')}</div></div>
-${q.l.length?`<div class="links">${q.l.map(([tx,u],j)=>`<a class="btn${j?' alt':''}" href="${u}">${tx[i]}</a>`).join('')}</div>`:''}</article>`).join('');
+${q.l.length?`<div class="links">${q.l.map(([tx,u],j)=>`<a class="btn${j?' alt':''}" href="${u}" target="_blank" rel="noopener noreferrer">${tx[i]}</a>`).join('')}</div>`:''}</article>`).join('');
   const got=achs.filter(a=>!a.lock).length;
   $('achCount').textContent=t.achCount(got);
   $('segs').innerHTML='<i></i>'.repeat(got)+'<i class="q">?</i>'.repeat(4);
