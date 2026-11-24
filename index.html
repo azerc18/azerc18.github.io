@@ -533,7 +533,7 @@ return `<svg viewBox="0 0 720 300" role="img" aria-label="Architecture diagram" 
 let openQ=null;
 const showQuest=idx=>{const q=quests[idx],D=DETAIL[q.n],t=T[L],i=ix();openQ=idx;if(!D)return;
 const sec=(h,body)=>body?`<section class="qsec"><h4>${h}</h4>${body}</section>`:'';
-const shots=D.shots.length?`<div class="shots">${D.shots.map((src,k)=>`<figure class="shot"><a href="${src}" target="_blank" rel="noopener" aria-label="${q.n} screenshot ${k+1} — full size"><img src="${src}" alt="${q.n} screenshot ${k+1}" loading="lazy" onerror="this.closest('.shot').classList.add('missing')"></a><span>${t.soon}</span></figure>`).join('')}</div>`:`<p class="prose muted">${t.noUI}</p>`;
+const shots=D.shots.length?`<div class="shots">${D.shots.map((src,k)=>`<figure class="shot"><a href="${src}" target="_blank" rel="noopener" aria-label="${q.n} screenshot ${k+1} — full size"><img src="${src}" alt="${q.n} screenshot ${k+1}" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt=1;const p=this.src.replace(/\.jpg$/,'.png');this.parentNode.href=p;this.src=p}else this.closest('.shot').classList.add('missing')"></a><span>${t.soon}</span></figure>`).join('')}</div>`:`<p class="prose muted">${t.noUI}</p>`;
 const boss=D.boss.length?`<ol class="boss">${D.boss.map(([c,s],k)=>`<li><div class="bc"><b>${t.challenge} ${k+1}</b><p>${c[i]}</p></div><div class="bs"><b>${t.solution}</b><p>${s[i]}</p></div></li>`).join('')}</ol>`:'';
 const win=D.win.length?`<ul class="win">${D.win.map(w=>`<li>${w[i]}</li>`).join('')}</ul>`:'';
 $('qbody').innerHTML=`<div class="qhead" style="--r:${rar[q.r]}">${icon(q.i)}<div><h3 id="qtitle">${q.n}</h3><p><span class="tag">★ ${q.r}</span> · ${q.st[i]}</p></div></div>
