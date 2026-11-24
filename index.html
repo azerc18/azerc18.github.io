@@ -480,8 +480,8 @@ const applyTheme=()=>{if(theme==='auto')delete root.dataset.theme;else root.data
 $('themeBtn').addEventListener('click',()=>{theme={auto:'light',light:'dark',dark:'auto'}[theme];applyTheme()});
 $('langBtn').addEventListener('click',()=>{L=L==='vi'?'en':'vi';root.lang=L;try{localStorage.setItem('tl-lang',L)}catch(e){}render()});
 
-/* ---------- 8-bit sound (on by default) ---------- */
-let sound=true;try{sound=localStorage.getItem('tl-snd')!=='0'}catch(e){}
+/* ---------- 8-bit sound (off by default) ---------- */
+let sound=false;try{sound=localStorage.getItem('tl-snd')!=='0'}catch(e){}
 let ac=null;
 const beep=(notes,type='square',vol=.06)=>{try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();
 let t=ac.currentTime;notes.forEach(([f,d])=>{const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(ac.destination);o.start(t);o.stop(t+d);t+=d*.9})}catch(e){}};
