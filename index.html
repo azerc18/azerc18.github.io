@@ -222,8 +222,7 @@ dialog.quest::backdrop{background:rgba(8,5,22,.72)}
 #typed::after{content:"▌";animation:blink .8s steps(2) infinite}
 .opts{display:grid;gap:10px}
 .opt{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding:6px 0}
-.opt b{font-size:calc(10px*var(--k));width:9em;color:var(--mute)}
-:root[lang=vi] .opt b{width:6em}
+.opt b{font-size:calc(10px*var(--k));flex:0 0 132px;white-space:nowrap;color:var(--mute)}
 .opt a{font-size:22px}
 #copied{color:var(--pink);font-size:18px}
 footer{background:var(--line);color:#cdbcf5;text-align:center;padding:22px;font-size:18px}
@@ -233,7 +232,7 @@ footer b{font-size:calc(9px*var(--k));color:#ffcf5c}
 .toast.show{transform:none}
 .toast svg{width:44px;height:44px;background:var(--gold);padding:6px}
 .toast b{display:block;font-size:calc(9px*var(--k));color:var(--gold);margin-bottom:4px}
-@media(max-width:600px){.hstats{grid-template-columns:repeat(2,minmax(0,1fr))}.player{grid-template-columns:1fr}.avatar{max-width:200px}nav .logo{width:100%}.opt b,:root[lang=vi] .opt b{width:auto;flex-basis:100%}}
+@media(max-width:600px){.hstats{grid-template-columns:repeat(2,minmax(0,1fr))}.player{grid-template-columns:1fr}.avatar{max-width:200px}nav .logo{width:100%}.opt b{flex-basis:100%}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
 </style>
 </head>
@@ -255,7 +254,7 @@ footer b{font-size:calc(9px*var(--k));color:#ffcf5c}
     <div class="hstats">
       <div><b>100%</b><span data-t="hs1">Scholarship · 4 years</span></div>
       <div><b>2</b><span data-t="hs2">Projects shipped</span></div>
-      <div><b>300+</b><span data-t="hs3">Tests written</span></div>
+      <div><b>3</b><span data-t="hs3">Auth systems built</span></div>
       <div><b>6.5</b><span data-t="hs4">IELTS</span></div>
     </div>
     <div class="cta"><a class="btn big" href="#quests" data-t="ctaQuests">▶ View quests</a><a class="btn big alt" href="ToanLe_Backend.pdf" download="ToanLe_Backend.pdf" target="_blank" rel="noopener" data-t="ctaCV">⬇ Download CV</a></div>
@@ -359,7 +358,7 @@ const two={1:'#1a0f3d',2:'#fff'};
 /* ---------- text EN / VI ---------- */
 const T={
 en:{navPlayer:'Player',navQuests:'Quests',navAch:'Achievements',navContact:'Contact',
-heroSub:'Java back-end developer · Spring Boot',open:'Open to back-end internship',tagline:'Building secure, reliable and well-tested back-end systems.',hs1:'Scholarship · 4 years',hs2:'Projects shipped',hs3:'Tests written',hs4:'IELTS',start:'▶ PRESS START',ctaQuests:'▶ View quests',ctaCV:'⬇ Download CV',
+heroSub:'Java back-end developer · Spring Boot',open:'Open to back-end internship',tagline:'Building secure, reliable and well-tested back-end systems.',hs1:'Scholarship · 4 years',hs2:'Projects shipped',hs3:'Auth systems built',hs4:'IELTS',start:'▶ PRESS START',ctaQuests:'▶ View quests',ctaCV:'⬇ Download CV',
 playerH:['Player ','— About Me'],playerLead:'One character, one class: back-end. Levelling up through university, team projects and real deployments.',
 sClass:'Class',vClass:'Back-end developer',sGuild:'Guild',vGuild:'FPT University · Software Engineering',sLevel:'Level',sTitles:'Titles',vLevel:'3rd-year student',
 bio:"I like back-end work where correctness matters: auth flows, concurrency, migrations and tests. Lately I've been wiring LLMs into real products — with quotas, fallbacks and a deploy pipeline, not just a demo.",
@@ -370,7 +369,7 @@ typed:'Thanks for playing! Want to team up on a back-end quest?',copy:'Copy',cop
 footer:'Never — just saving progress.',openQ:'Quest info ▸',caseStudy:'Case study ▸',qinfo:'Quest info',close:'✕ Close',obj:'Objective',role:'My role',shots:'Screenshots',arch:'Architecture map',boss:'Boss fights — challenges & solutions',challenge:'Challenge',solution:'Solution',win:'Rewards — results',loot:'Loot — tech stack',soon:'Screenshot coming soon',noUI:'Back-end service — no user interface to show.',writeup:'Full write-up coming soon.',toastH:'Achievement unlocked',toastB:'Explorer — you scrolled all the way here',
 theme:{auto:'◐ Auto',light:'☀ Light',dark:'☾ Dark'},snd:['♪ Off','♪ On'],lang:'VI'},
 vi:{navPlayer:'Nhân vật',navQuests:'Dự án',navAch:'Thành tựu',navContact:'Liên hệ',
-heroSub:'Lập trình viên back-end Java · Spring Boot',open:'Đang tìm vị trí thực tập back-end',tagline:'Xây dựng hệ thống back-end bảo mật, ổn định và được kiểm thử kỹ.',hs1:'Học bổng · 4 năm',hs2:'Dự án đã ra mắt',hs3:'Test đã viết',hs4:'IELTS',start:'▶ BẮT ĐẦU',ctaQuests:'▶ Xem dự án',ctaCV:'⬇ Tải CV',
+heroSub:'Lập trình viên back-end Java · Spring Boot',open:'Đang tìm vị trí thực tập back-end',tagline:'Xây dựng hệ thống back-end bảo mật, ổn định và được kiểm thử kỹ.',hs1:'Học bổng · 4 năm',hs2:'Dự án đã ra mắt',hs3:'Hệ thống xác thực đã xây',hs4:'IELTS',start:'▶ BẮT ĐẦU',ctaQuests:'▶ Xem dự án',ctaCV:'⬇ Tải CV',
 playerH:['Nhân vật ','— Giới thiệu'],playerLead:'Một nhân vật, một class: back-end. Đang lên cấp qua việc học, dự án nhóm và những lần deploy thật.',
 sClass:'Lớp nhân vật',vClass:'Lập trình viên back-end',sGuild:'Bang hội',vGuild:'Đại học FPT · Kỹ thuật phần mềm',sLevel:'Cấp độ',sTitles:'Danh hiệu',vLevel:'Sinh viên năm 3',
 bio:'Mình thích phần back-end nơi tính đúng đắn là quan trọng: luồng xác thực, xử lý đồng thời, migration và test. Gần đây mình đưa LLM vào sản phẩm thật — có giới hạn lượt dùng, có provider dự phòng và pipeline deploy, không chỉ là demo.',
